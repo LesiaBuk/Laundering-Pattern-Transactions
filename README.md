@@ -101,12 +101,12 @@ Availability Acc in Account_1 = LOOKUPVALUE('HI-Medium_Trans'[Ones for lookupval
 The first matrix has the following view: <br/>
 ![account_matrix](https://github.com/user-attachments/assets/4e6e8f49-a6e2-45ae-8f70-b46febbefca2)<br/>
 
-Also, a tooltip with 2 graphs was added here: one column chart shows the laundering amount paid and payment formats of it, and the second one shows no laundering amount paid and payment formats of it.
+Also, a tooltip with 2 graphs was added here: one column chart shows the laundering amount paid and payment formats of it, and the second one shows no laundering amount paid and payment formats of it.<br/>
 ![tooltip1](https://github.com/user-attachments/assets/7cffcd71-db9a-440c-a6a1-c4e2f6d81e3e)<br/>
 A drillthrough feature was added to the “Account” and “Timestamp” rows, showing Count of transactions where Laundering is present, Count of distinct banks from which transactions were made, Count of distinct banks to which transactions were made using 3 visual cards, and some information about the Account`s bank using a table.
 ![drill-through1](https://github.com/user-attachments/assets/f56575ce-32f7-4ff6-b0af-aa3d369cf887)<br/>
 - Step 14 : The **second matrix** on the bottom right contains a list of accounts to where money transfers(“Account_1”), the date and time of the transfer (“Timestamp”), and the accounts from which the money is transferred (“Account”). Values contain data of the number of transactions of this account (“Count of Transactions”), the amount transferred (“Sum of Amount Received”) and information whether this account is present in the Account column, i.e. not only receives money, but also transfers it.The following DAX formula was used for this purpose:
-  ```
+```
 Availability Acc_1 in Account = LOOKUPVALUE('HI-Medium_Trans'[Ones for lookupvalue],'HI-Medium_Trans'[Account],'HI-Medium_Trans'[Account_1],"0")
 ```
 The second matrix has the following view: <br/>
@@ -183,7 +183,7 @@ Now let`s visualize calculated table "Copy_filter_table_main3" with selected col
 ![copy_filter_table_main3](https://github.com/user-attachments/assets/8df00728-6caf-4839-9c39-3f2bc748bec2)<br/>
  For the interactive component to work, create a Many-to-Many relationship in both directions between the “Copy_filter_table_main2” and “Copy_filter_table_main3” tables.<br/>
 - Step 19 : The next step is to show the dispersion patterns in these 4 created tables using conditional formatting. ( When one account transfers money to several accounts or vice versa. This increases the probability that a money laundering scheme is involved). <br/>
-Create a table with aggregated data using the SUMMIRIZE function, where GroupBy_Column_Name are the columns “Account_1” and “Account”, and we need to count how many times the value “Account_1” occurs in the column. (Depending on whether we need to see the repetitions of Account or Account_1, we supply count[Account] or count[Account_1]).
+Create a table with aggregated data using the SUMMIRIZE function, where GroupBy_Column_Name are the columns “Account_1” and “Account”, and we need to count how many times the value “Account_1” occurs in the column. (Depending on whether we need to see the repetitions of Account or Account_1, we supply count[Account] or count[Account_1]).<br/>
 ```
 repeated_Table = SUMMARIZE(Table_Account,Table_Account[Account_1],Table_Account[Account],"Doubled_Account_1", COUNTA(Table_Account[Account_1]))
 ```
