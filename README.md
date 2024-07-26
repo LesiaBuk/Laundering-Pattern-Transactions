@@ -5,6 +5,7 @@ By definition, Money Laundering is the movement of illicit funds in order to con
 Unfortunately, real transaction data is not available to study Money Laundering models (banks cannot provide such data to the public).That is why synthetic transaction data from IBM is used to create a training model of Money Laundering. Financial transactions in this model are conducted via banks, i.e. the payer and receiver both have accounts, with accounts taking multiple forms from checking to credit cards or bitcoin.
 
 This project aims to help you see the chains of transactions more clearly, to delve into where money laundering patterns may begin and end, and to observe the regularities that emerge.<br/>
+
 Here is a link to the Google drive where the project file in pbix format is uploaded:<br/>
 https://drive.google.com/file/d/1kzKA9QsgdmTsDCs3qlpPiBQMi3_TiRRz/view?usp=drive_link <br/>
 
@@ -151,7 +152,7 @@ Copy_filter_table_main1 = FILTER(Filter_table_main, Filter_table_main[lookup_Acc
 
 ![copy_filter_table_main1](https://github.com/user-attachments/assets/cf91e964-eb9a-43df-9097-b0f32bd3b948) <br/>
  For the interactive component to work, create a Many-to-Many relationship in both directions between the “Filter_table_main” and “Copy_filter_table_main1” tables.<br/>
- - Step 17: There is a need to create a calculated table with transactions, in which the column “Account” will contain the value Account_1 from the table “Copy_filter_table_main1”. For this create a table with aggregated data, where GroupBy_Column_Name is the column “Account_1” from the table “Copy_filter_table_main1”:
+ - Step 17 : There is a need to create a calculated table with transactions, in which the column “Account” will contain the value Account_1 from the table “Copy_filter_table_main1”. For this create a table with aggregated data, where GroupBy_Column_Name is the column “Account_1” from the table “Copy_filter_table_main1”:
  ```
 List_Account_1_2 = SUMMARIZE(CALCULATETABLE(Filter_table_main,Filter_table_main[lookup_Account1_1]<>0),Filter_table_main[Account_1],Filter_table_main[Account],"count_banks", COUNT(Filter_table_main[To Bank]))
  ```
