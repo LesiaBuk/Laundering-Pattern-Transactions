@@ -4,8 +4,11 @@ The problem of Money Laundering has always existed everywhere, it has no borders
 By definition, Money Laundering is the movement of illicit funds in order to conceal their origin, while creating complex transaction schemes.
 Unfortunately, real transaction data is not available to study Money Laundering models (banks cannot provide such data to the public).That is why synthetic transaction data from IBM is used to create a training model of Money Laundering. Financial transactions in this model are conducted via banks, i.e. the payer and receiver both have accounts, with accounts taking multiple forms from checking to credit cards or bitcoin.
 
-This project aims to help you see the chains of transactions more clearly, to delve into where money laundering patterns may begin and end, and to observe the regularities that emerge.
-The following steps were made:
+This project aims to help you see the chains of transactions more clearly, to delve into where money laundering patterns may begin and end, and to observe the regularities that emerge.<br/>
+Here is a link to the Google drive where the project file in pbix format is uploaded:<br/>
+https://drive.google.com/file/d/1kzKA9QsgdmTsDCs3qlpPiBQMi3_TiRRz/view?usp=drive_link <br/>
+
+The following steps were made to create this project:
 
 - Step 1 : Load data into Power BI Desktop, dataset is a csv file.<br/>
 - Step2 : In the Power Query Editor, I checked whether the format of all columns was correct, whether there was any blank data in the columns<br/>
