@@ -187,27 +187,27 @@ Now let`s visualize calculated table "Copy_filter_table_main3" with selected col
 ![copy_filter_table_main3](https://github.com/user-attachments/assets/8df00728-6caf-4839-9c39-3f2bc748bec2)<br/>
  For the interactive component to work, create a Many-to-Many relationship in both directions between the “Copy_filter_table_main2” and “Copy_filter_table_main3” tables.<br/>
 - Step 19 : The next step is to show the dispersion patterns in these 4 created tables using conditional formatting. ( When one account transfers money to several accounts or vice versa. This increases the probability that a money laundering scheme is involved). <br/>
-Create a table with aggregated data using the SUMMIRIZE function, where GroupBy_Column_Name are the columns “Account_1” and “Account”, and we need to count how many times the value “Account_1” occurs in the column. (Depending on whether we need to see the repetitions of Account or Account_1, we supply count[Account] or count[Account_1]).<br/>
+Let's create 6 measures that will count the repetitions of accounts in the “Account” and “Account_1” columns for each of the 4 visual tables. In order to show this in the visual table, with filters already applied, we will use the allexcept function. The countrows function will help calculate the count.<br/>
 ```
-repeated_Table = SUMMARIZE(Table_Account,Table_Account[Account_1],Table_Account[Account],"Doubled_Account_1", COUNTA(Table_Account[Account_1]))
-```
-```
-repeated_Table1_1 = SUMMARIZE(Copy_filter_table_main1,Copy_filter_table_main1[Account],"Doubled_Account", COUNTA(Copy_filter_table_main1[Account]))
+repeated_Measure0_1 = CALCULATE(COUNTROWS(Table_Account),ALLEXCEPT(Table_Account, Table_Account[Account_1],Table_Account[Account]))
 ```
 ```
-repeated_Table1_2 = SUMMARIZE(Copy_filter_table_main1,Copy_filter_table_main1[Account_1],Copy_filter_table_main1[Account],"Doubled_Account_1", COUNT(Copy_filter_table_main1[Account_1]))
+repeated_Measure1_1 = CALCULATE(COUNTROWS(Copy_filter_table_main1),ALLEXCEPT(Copy_filter_table_main1, Copy_filter_table_main1[Account]))
 ```
 ```
-repeated_Table2_1 = SUMMARIZE(Copy_filter_table_main2,Copy_filter_table_main2[Account],"Doubled_Account", COUNTA(Copy_filter_table_main2[Account]))
+repeated_Measure1_2 = CALCULATE(COUNTROWS(Copy_filter_table_main1),ALLEXCEPT(Copy_filter_table_main1, Copy_filter_table_main1[Account_1]))
 ```
 ```
-repeated_Table2_2 = SUMMARIZE(Copy_filter_table_main2,Copy_filter_table_main2[Account_1],"Doubled_Account_1", COUNT(Copy_filter_table_main2[Account_1]))
+repeated_Measure2_1 = CALCULATE(COUNTROWS(Copy_filter_table_main2),ALLEXCEPT(Copy_filter_table_main2, Copy_filter_table_main2[Account]))
 ```
 ```
-repeated_Table3_1 = SUMMARIZE(Copy_filter_table_main3,Copy_filter_table_main3[Account_1],Copy_filter_table_main3[Account],"Doubled_Account", COUNT(Copy_filter_table_main3[Account]))
+repeated_Measure2_2 = CALCULATE(COUNTROWS(Copy_filter_table_main2),ALLEXCEPT(Copy_filter_table_main2, Copy_filter_table_main2[Account_1]))
 ```
 ```
-repeated_Table3_2 = SUMMARIZE(Copy_filter_table_main3,Copy_filter_table_main3[Account_1],Copy_filter_table_main3[Account],"Doubled_Account_1", COUNT(Copy_filter_table_main3[Account_1]))
+repeated_Measure3_1 = CALCULATE(COUNTROWS(Copy_filter_table_main3),ALLEXCEPT(Copy_filter_table_main3, Copy_filter_table_main3[Account]))
+```
+```
+repeated_Measure3_2 = CALCULATE(COUNTROWS(Copy_filter_table_main3),ALLEXCEPT(Copy_filter_table_main3, Copy_filter_table_main3[Account_1]))
 ```
 Now, using conditional formatting in the columns “Account_1” and “Account” in 4 tables (in the first table only in the column “Account_1”), we set if “Doubled_Account” or “Doubled_Account_1” should be more than 1, in this case, we change the background color to gray.<br/>
 As a final result, the **third dashboard** titled ***“How to track down Money Laundering Pattern”*** looks like this:
