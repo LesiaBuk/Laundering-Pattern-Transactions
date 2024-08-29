@@ -7,7 +7,7 @@ Unfortunately, real transaction data is not available to study Money Laundering 
 This project aims to help you see the chains of transactions more clearly, to delve into where money laundering patterns may begin and end, and to observe the regularities that emerge.<br/>
 
 Here is a link to the Google drive where the project file in pbix format is uploaded:<br/>
-https://drive.google.com/file/d/1kzKA9QsgdmTsDCs3qlpPiBQMi3_TiRRz/view?usp=drive_link <br/>
+https://drive.google.com/drive/folders/1fHbkUUvFiFipzY-X6Vi1wUGcf3ZcLvL9?usp=drive_link <br/>
 
 The following steps were made to create this project:
 
